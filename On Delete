@@ -1,0 +1,16 @@
+DELETE FROM employee
+WHERE emp_id = 102;
+
+SELECT *
+FROM branch;
+
+SELECT *
+FROM employee;
+
+INSERT INTO employee VALUES(102, 'Wallace', 'Smith', '1995-05-04', 'M', 120000, 100, 2);
+
+DELETE FROM branch 
+WHERE branch_id = 2;
+
+SELECT * 
+FROM branch_supplier;
