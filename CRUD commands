@@ -1,0 +1,97 @@
+CREATE TABLE student (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    major VARCHAR(20)
+);
+
+-- Add constraints to the schema
+CREATE TABLE student (
+    student_id INT,
+    name VARCHAR(20) NOT NULL, -- value cannot be null
+    major VARCHAR(20) UNIQUE, -- field has to be unique
+    PRIMARY KEY (student_id) -- basically, not null and unique
+);
+
+CREATE TABLE student (
+    student_id INT AUTO_INCREMENT, -- get automacticlally increment it everytime we add one in
+    name VARCHAR(20), 
+    major VARCHAR(20), -- field has a default value
+    PRIMARY KEY (student_id)
+);
+
+DESCRIBE student;
+
+-- Delete Table
+DROP TABLE student;
+
+ALTER TABLE student ADD gpa DECIMAL(3,2);
+ALTER TABLE student DROP COLUMN gpa;
+
+-- Views table 
+SELECT * FROM student;
+-- Inserting
+INSERT INTO student(name, major) VALUES('Jack', 'Biology');
+INSERT INTO student(name, major) VALUES('Kate', 'Sociology');
+
+INSERT INTO student VALUES(1, 'Jack', 'Biology');
+INSERT INTO student VALUES(2, 'Kate', 'Sociology');
+INSERT INTO student VALUES(3, "Johnson", "Statistic");
+INSERT INTO student VALUES(3, NULL, 'Chemistry');
+INSERT INTO student VALUES(4, 'Jack', 'Biology');
+INSERT INTO student VALUES(5, 'Mike', 'Computer Science');
+
+DELETE FROM student WHERE student_id=3;
+
+-- Update
+UPDATE student
+SET major = 'Bio'
+WHERE major = 'Biology';
+
+UPDATE student
+SET major = 'Comp Sci'
+WHERE major = 'Computer Science';
+
+UPDATE student
+SET major = 'Comp Sci'
+WHERE student_id = 4;
+
+UPDATE student
+SET major = 'Biochemistry'
+WHERE major = 'Bio' OR major = 'Chemistry';
+
+UPDATE student
+SET name = 'Tom', major = 'undecided'
+WHERE student_id = 1;
+
+UPDATE student
+SET name = NULL
+WHERE student_id = 4;
+
+-- Delete
+DELETE FROM student
+WHERE name IS NULL;
+
+DELETE FROM student;
+
+SELECT * FROM student;
+
+-- Query
+SELECT * FROM student; -- Select tell RDBMS that we want to get some information from it
+
+SELECT name, major
+FROM student
+ORDER BY name DESC
+LIMIT 2;
+
+SELECT name, major
+FROM student
+WHERE major = 'Computer Science' OR major = 'Biology';
+-- Comment, other logical operators
+-- <, >, <=, >=, =, <> (NOT EQUAL TO), AND, OR, IN
+
+SELECT *
+FROM student
+WHERE major IN ('Biology', "Computer Science");
+
+
+
